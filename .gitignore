@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Data / artifacts (large, local only) — keep data/download_data.py
+/data/raw/
+/data/chroma/
+/data/audit/
+/data/catalog.json
+/data/manifest.json
+/models/
+/reports/
+/artifacts/
+*.duckdb
+*.sqlite
+*.sqlite3
+
+# Node / web
+node_modules/
+.next/
+out/
+.turbo/
+pnpm-lock.yaml
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log

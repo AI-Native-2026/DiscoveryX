@@ -1,0 +1,56 @@
+{
+  "version": "1.0",
+  "description": "DiscoveryX RBAC policy. Roles map to permissions (resource:action) and to a data clearance level used for dataset/RAG filtering.",
+  "clearance_levels": ["public", "internal", "confidential", "restricted"],
+  "roles": {
+    "admin": {
+      "description": "Platform administrator",
+      "permissions": ["*"],
+      "clearance": "restricted"
+    },
+    "scientist": {
+      "description": "Discovery scientist (medicinal chemist / biologist)",
+      "permissions": [
+        "task:submit",
+        "task:read",
+        "project:read",
+        "project:create",
+        "rag:query",
+        "dataset:read",
+        "dataset:import",
+        "copilot:chat",
+        "guardrails:check",
+        "approval:read",
+        "approval:decide",
+        "llm:call"
+      ],
+      "clearance": "confidential"
+    },
+    "engineer": {
+      "description": "AI / platform engineer",
+      "permissions": [
+        "task:read",
+        "dataset:read",
+        "dataset:index",
+        "dataset:delete",
+        "audit:read",
+        "project:read",
+        "approval:read",
+        "copilot:chat",
+        "llm:call"
+      ],
+      "clearance": "internal"
+    },
+    "auditor": {
+      "description": "Compliance auditor (read-only)",
+      "permissions": ["task:read", "audit:read", "guardrails:read", "approval:read", "project:read"],
+      "clearance": "confidential"
+    },
+    "guest": {
+      "description": "Unauthenticated / limited access",
+      "permissions": ["rag:query"],
+      "clearance": "public"
+    }
+  },
+  "default_role": "guest"
+}
